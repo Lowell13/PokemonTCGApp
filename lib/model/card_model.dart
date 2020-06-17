@@ -97,6 +97,9 @@ class CardModel {
       weaknesses: json['weaknesses'].toString(),
     );
 
+    if (cardModel.name.contains("Poké")) {
+      print('Card : ${cardModel.toString()}\n');
+    }
     return cardModel;
   }
 

@@ -74,7 +74,7 @@ class CustomSearchDelegate extends SearchDelegate {
                         ),
                         CustomCard(
                           viewCard: Hero(
-                            tag: 'card' + _listCardModel[position].name,
+                            tag: 'card' + _listCardModel[position].id,
                             child: CachedNetworkImage(
                               imageUrl: _listCardModel[position].imageUrlHiRes,
                               errorWidget: (context, url, error) =>
