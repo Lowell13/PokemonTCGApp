@@ -13,6 +13,11 @@ class CustomSearchDelegate extends SearchDelegate {
   CustomSearchDelegate(this._listCardModel, this.duplicateList);
 
   @override
+  ThemeData appBarTheme(BuildContext context) {
+    return Theme.of(context); // return super.appBarTheme(context);
+  }
+
+  @override
   List<Widget> buildActions(BuildContext context) {
     return [
       IconButton(
@@ -55,7 +60,7 @@ class CustomSearchDelegate extends SearchDelegate {
               itemBuilder: (context, position) {
                 return Card(
                   elevation: 2.0,
-                  color: cardBackgroundColor,
+                  color: accentColor,
                   child: Padding(
                     padding: const EdgeInsets.symmetric(
                         horizontal: 15.0, vertical: 10.0),

@@ -3,10 +3,11 @@ import 'package:pokemontcgviewer/style/colors.dart';
 
 ThemeData appTheme = ThemeData(
   brightness: Brightness.dark,
-  primaryColor: Colors.red, //primaryColor,
-  accentColor: Colors.blueAccent,
+  primaryColor: primaryColor,
+  accentColor: accentColor,
   appBarTheme: appBarTheme,
   textTheme: textTheme,
+  cursorColor: primaryTextColor,
 );
 
 AppBarTheme appBarTheme = AppBarTheme(

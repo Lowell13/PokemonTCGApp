@@ -16,7 +16,7 @@ class DetailedCard extends StatelessWidget {
       children: <Widget>[
         Card(
           elevation: 2.0,
-          color: cardBackgroundColor,
+          color: accentColor,
           child: Padding(
             padding: const EdgeInsets.all(16.0),
             child: Row(
