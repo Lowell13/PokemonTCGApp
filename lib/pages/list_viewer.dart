@@ -2,7 +2,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:pokemontcgviewer/model/card_model.dart';
 import 'package:pokemontcgviewer/pages/custom_search_delegate.dart';
-import 'package:pokemontcgviewer/pages/detailed_view.dart';
 import 'package:pokemontcgviewer/style/colors.dart';
 import 'package:pokemontcgviewer/widget/custom_card.dart';
 
@@ -36,7 +35,10 @@ class _ListViewerState extends State<ListViewer> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Pokemon Card List'),
+          title: Text(
+            'Pokemon Card List',
+            style: Theme.of(context).textTheme.bodyText1,
+          ),
           actions: <Widget>[
             IconButton(
               icon: Icon(Icons.search),
@@ -88,8 +90,7 @@ class _ListViewerState extends State<ListViewer> {
                               ),
                               onPressed: () {
                                 Navigator.pushNamed(context, '/detailed_view',
-                                    arguments: DetailedPokemon(
-                                        _listCardModel[position]));
+                                    arguments: _listCardModel[position]);
                               },
                             ),
                           ],

@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 class PokemonAbility {
   String name;
   String text;
@@ -13,5 +15,29 @@ class PokemonAbility {
     );
 
     return pokemonAbility;
+  }
+
+  @override
+  String toString() {
+    return 'PokemonAbility{name: $name, text: $text, type: $type}';
+  }
+
+  Widget getWidget(BuildContext context) {
+    return Column(
+      children: <Widget>[
+        Text(
+          'Ability :',
+          style: Theme.of(context).textTheme.bodyText2,
+        ),
+        Text(
+          '$type : $name',
+          style: Theme.of(context).textTheme.bodyText2,
+        ),
+        Text(
+          '$text',
+          style: Theme.of(context).textTheme.bodyText2,
+        ),
+      ],
+    );
   }
 }

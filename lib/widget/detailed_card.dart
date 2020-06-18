@@ -2,7 +2,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:pokemontcgviewer/model/card_model.dart';
 import 'package:pokemontcgviewer/pages/big_card.dart';
-import 'package:pokemontcgviewer/style/colors.dart';
 import 'package:pokemontcgviewer/widget/custom_card.dart';
 
 class DetailedCard extends StatelessWidget {
@@ -16,7 +15,6 @@ class DetailedCard extends StatelessWidget {
       children: <Widget>[
         Card(
           elevation: 2.0,
-          color: accentColor,
           child: Padding(
             padding: const EdgeInsets.all(16.0),
             child: Row(
@@ -39,18 +37,53 @@ class DetailedCard extends StatelessWidget {
                 ),
                 Column(
                   children: <Widget>[
-                    Text('Name : ${_pokemonCard.name}'),
-                    Text('Types : ${_pokemonCard.types}'),
-                    Text('Weaknesses : ${_pokemonCard.weaknesses}'),
-                    Text('HP : ${_pokemonCard.hp}'),
-                    Text('Artist : ${_pokemonCard.artist}'),
+                    Text(
+                      'Name : ${_pokemonCard.name}',
+                      style: Theme.of(context).textTheme.bodyText2,
+                    ),
+                    Text(''),
+                    Text(
+                      'Supertype : ${_pokemonCard.supertype}',
+                      style: Theme.of(context).textTheme.bodyText2,
+                    ),
+                    Text(
+                      'Subtype : ${_pokemonCard.subtype}',
+                      style: Theme.of(context).textTheme.bodyText2,
+                    ),
+                    Text(''),
+                    Text(
+                      'Artist : ${_pokemonCard.artist}',
+                      style: Theme.of(context).textTheme.bodyText2,
+                    ),
+                    Text(
+                      'Rarity : ${_pokemonCard.rarity}',
+                      style: Theme.of(context).textTheme.bodyText2,
+                    ),
+                    Text(
+                      'Serie : ${_pokemonCard.series}',
+                      style: Theme.of(context).textTheme.bodyText2,
+                    ),
+                    Text(
+                      'Set : ${_pokemonCard.set}',
+                      style: Theme.of(context).textTheme.bodyText2,
+                    ),
+                    Text(
+                      'Card number for set: ${_pokemonCard.number}',
+                      style: Theme.of(context).textTheme.bodyText2,
+                    ),
                   ],
                 ),
               ],
             ),
           ),
         ),
-        Text('Description : ${_pokemonCard.text}'),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(
+            'Description : ${_pokemonCard.text.join()}',
+            style: Theme.of(context).textTheme.bodyText2,
+          ),
+        ),
       ],
     );
   }

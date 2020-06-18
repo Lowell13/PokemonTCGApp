@@ -9,15 +9,17 @@ class CardServiceAPI {
   static Future<List<CardModel>> getCardList() async {
     List<CardModel> cardList;
 
-    var response = await http.get(cardURL);
+    var response = await http.get(cardURL).catchError((_) {
+      return null;
+    }).timeout(Duration(seconds: 10));
 
-    Map<String, dynamic> responseJson = jsonDecode(response.body);
+    if (response != null) {
+      Map<String, dynamic> responseJson = jsonDecode(response.body);
 
-    cardList = List.from(responseJson['cards'])
-        .map((e) => CardModel.fromJson(e))
-        .toList();
-
-    await Future.delayed(Duration(seconds: 1));
+      cardList = List.from(responseJson['cards'])
+          .map((e) => CardModel.fromJson(e))
+          .toList();
+    }
 
     return cardList;
   }

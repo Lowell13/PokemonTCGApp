@@ -1,17 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pokemontcgviewer/model/card_model.dart';
 import 'package:pokemontcgviewer/widget/detailed_card.dart';
-
-class DetailedPokemon {
-  CardModel pokemon;
-
-  DetailedPokemon(this.pokemon);
-
-  @override
-  String toString() {
-    return 'DetailedPokemon{pokemon: $pokemon}';
-  }
-}
+import 'package:pokemontcgviewer/widget/detailed_pokemon.dart';
 
 class DetailedView extends StatefulWidget {
   @override
@@ -19,18 +9,26 @@ class DetailedView extends StatefulWidget {
 }
 
 class _DetailedViewState extends State<DetailedView> {
+  Widget _getView(CardModel cardModel) {
+    return cardModel.isPokemon()
+        ? DetailedPokemon(cardModel)
+        : DetailedCard(cardModel);
+  }
+
   @override
   Widget build(BuildContext context) {
-    final DetailedPokemon detailedPokemon =
-        ModalRoute.of(context).settings.arguments;
+    final CardModel cardModel = ModalRoute.of(context).settings.arguments;
 
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: Text(detailedPokemon.pokemon.name),
+          title: Text(
+            cardModel.name,
+            style: Theme.of(context).textTheme.bodyText1,
+          ),
         ),
         body: Container(
-          child: DetailedCard(detailedPokemon.pokemon),
+          child: _getView(cardModel), // DetailedCard(detailedPokemon.pokemon),
         ),
       ),
     );

@@ -4,8 +4,6 @@ import 'package:pokemontcgviewer/model/card_model.dart';
 import 'package:pokemontcgviewer/style/colors.dart';
 import 'package:pokemontcgviewer/widget/custom_card.dart';
 
-import 'detailed_view.dart';
-
 class CustomSearchDelegate extends SearchDelegate {
   List<CardModel> _listCardModel;
   final List<CardModel> duplicateList;
@@ -14,7 +12,7 @@ class CustomSearchDelegate extends SearchDelegate {
 
   @override
   ThemeData appBarTheme(BuildContext context) {
-    return Theme.of(context); // return super.appBarTheme(context);
+    return Theme.of(context);
   }
 
   @override
@@ -42,10 +40,6 @@ class CustomSearchDelegate extends SearchDelegate {
   @override
   Widget buildResults(BuildContext context) {
     _filterResults(query, duplicateList);
-
-    //Add the search term to the searchBloc.
-    //The Bloc will then handle the searching and add the results to the searchResults stream.
-    //This is the equivalent of submitting the search term to whatever search service you are using
 
     return Column(
       children: <Widget>[
@@ -84,8 +78,7 @@ class CustomSearchDelegate extends SearchDelegate {
                           ),
                           onPressed: () {
                             Navigator.pushNamed(context, '/detailed_view',
-                                arguments:
-                                    DetailedPokemon(_listCardModel[position]));
+                                arguments: _listCardModel[position]);
                           },
                         ),
                       ],
@@ -100,9 +93,6 @@ class CustomSearchDelegate extends SearchDelegate {
 
   @override
   Widget buildSuggestions(BuildContext context) {
-    // This method is called everytime the search term changes.
-    // If you want to add search suggestions as the user enters their search term, this is the place to do that.
-
     return buildResults(context);
   }
 

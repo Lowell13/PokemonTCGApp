@@ -24,7 +24,7 @@ class CardModel {
   List<PokemonAttack> attacks;
   List<PokemonTypeAffection> weaknesses;
   int convertedRetreatCost;
-  String text;
+  List<String> text;
   PokemonAbility ability;
   List<PokemonTypeAffection> resistances;
   PokemonAncientTrait ancientTrait;
@@ -58,21 +58,21 @@ class CardModel {
 
   factory CardModel.fromJson(Map<String, dynamic> json) {
     CardModel cardModel = CardModel(
-      id: json['id'].toString(),
-      name: json['name'].toString(),
+      id: json['id'],
+      name: json['name'],
       nationalPokedexNumber: json['nationalPokedexNumber'],
-      imageUrl: json['imageUrl'].toString(),
-      imageUrlHiRes: json['imageUrlHiRes'].toString(),
-      text: json['text'].toString(),
-      number: json['number'].toString(),
-      artist: json['artist'].toString(),
+      imageUrl: json['imageUrl'],
+      imageUrlHiRes: json['imageUrlHiRes'],
+      text: json['text'] != null ? List.from(json['text']) : null,
+      number: json['number'],
+      artist: json['artist'],
       ancientTrait: json['ancientTrait'] != null
           ? PokemonAncientTrait.fromJson(json['ancientTrait'])
           : null,
       convertedRetreatCost: json['convertedRetreatCost'],
-      evolvesFrom: json['evolvesFrom'].toString(),
-      hp: json['hp'].toString(),
-      rarity: json['rarity'].toString(),
+      evolvesFrom: json['evolvesFrom'],
+      hp: json['hp'],
+      rarity: json['rarity'],
       resistances: json['resistances'] != null
           ? List.from(json['resistances'])
               .map((e) => PokemonTypeAffection.fromJson(e))
@@ -80,11 +80,13 @@ class CardModel {
           : null,
       retreatCost:
           json['retreatCost'] != null ? List.from(json['retreatCost']) : null,
-      series: json['series'].toString(),
-      set: json['set'].toString(),
-      setCode: json['setCode'].toString(),
-      subtype: json['subtype'].toString(),
-      supertype: json['supertype'].toString(),
+      series: json['series'],
+      set: json['set'],
+      setCode: json['setCode'],
+      subtype: json['subtype'].toString().trim().isNotEmpty
+          ? json['subtype']
+          : "None",
+      supertype: json['supertype'],
       types: json['types'] != null ? List.from(json['types']) : null,
       weaknesses: json['weaknesses'] != null
           ? List.from(json['weaknesses'])
@@ -107,5 +109,15 @@ class CardModel {
   @override
   String toString() {
     return 'CardModel{id: $id, name: $name, nationalPokedexNumber: $nationalPokedexNumber, imageUrl: $imageUrl, imageUrlHiRes: $imageUrlHiRes, types: $types, subtype: $subtype, supertype: $supertype, evolvesFrom: $evolvesFrom, hp: $hp, retreatCost: $retreatCost, number: $number, artist: $artist, rarity: $rarity, series: $series, set: $set, setCode: $setCode, attacks: $attacks, weaknesses: $weaknesses, convertedRetreatCost: $convertedRetreatCost, text: $text, ability: $ability, resistances: $resistances, ancientTrait: $ancientTrait}';
+  }
+
+  bool isPokemon() {
+    return (subtype == "Basic" ||
+            subtype == "Stage 1" ||
+            subtype == "Stage 2" ||
+            subtype == "EX" ||
+            subtype == "MEGA")
+        ? true
+        : false;
   }
 }

@@ -8,6 +8,7 @@ ThemeData appTheme = ThemeData(
   appBarTheme: appBarTheme,
   textTheme: textTheme,
   cursorColor: primaryTextColor,
+  cardColor: accentColor,
 );
 
 AppBarTheme appBarTheme = AppBarTheme(

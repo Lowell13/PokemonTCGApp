@@ -21,8 +21,7 @@ class _SplashscreenState extends State<Splashscreen> {
   _loadData() async {
     List<CardModel> _listCard;
 
-    _listCard =
-        await CardServiceAPI.getCardList().timeout(Duration(seconds: 10));
+    _listCard = await CardServiceAPI.getCardList();
 
     if (_listCard != null) {
       Navigator.popAndPushNamed(context, '/list_viewer',
