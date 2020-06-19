@@ -1,15 +1,11 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pokemontcgviewer/bloc/list_card/list_card_bloc.dart';
 import 'package:pokemontcgviewer/model/card_model.dart';
-import 'package:pokemontcgviewer/style/colors.dart';
-import 'package:pokemontcgviewer/widget/custom_card.dart';
+import 'package:pokemontcgviewer/repository/list_card/list_card_repository.dart';
+import 'package:pokemontcgviewer/widget/pokemon_grid_viewer.dart';
 
 class CustomSearchDelegate extends SearchDelegate {
-  List<CardModel> _listCardModel;
-  final List<CardModel> duplicateList;
-
-  CustomSearchDelegate(this._listCardModel, this.duplicateList);
-
   @override
   ThemeData appBarTheme(BuildContext context) {
     return Theme.of(context);
@@ -32,6 +28,7 @@ class CustomSearchDelegate extends SearchDelegate {
     return IconButton(
       icon: Icon(Icons.arrow_back),
       onPressed: () {
+        BlocProvider.of<ListCardBloc>(context).add(ResetListCardEvent());
         close(context, null);
       },
     );
@@ -39,56 +36,9 @@ class CustomSearchDelegate extends SearchDelegate {
 
   @override
   Widget buildResults(BuildContext context) {
-    _filterResults(query, duplicateList);
+    _filterResults(context, query);
 
-    return Column(
-      children: <Widget>[
-        Expanded(
-          child: GridView.builder(
-              itemCount: _listCardModel.length,
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                childAspectRatio: 0.7,
-              ),
-              padding: EdgeInsets.symmetric(horizontal: 5.0),
-              itemBuilder: (context, position) {
-                return Card(
-                  elevation: 2.0,
-                  color: accentColor,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 15.0, vertical: 10.0),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
-                        Text(
-                          '${_listCardModel[position].name}',
-                          style: Theme.of(context).textTheme.bodyText2,
-                          overflow: TextOverflow.clip,
-                        ),
-                        CustomCard(
-                          viewCard: Hero(
-                            tag: 'card' + _listCardModel[position].id,
-                            child: CachedNetworkImage(
-                              imageUrl: _listCardModel[position].imageUrlHiRes,
-                              errorWidget: (context, url, error) =>
-                                  Icon(Icons.error),
-                              fit: BoxFit.fitWidth,
-                            ),
-                          ),
-                          onPressed: () {
-                            Navigator.pushNamed(context, '/detailed_view',
-                                arguments: _listCardModel[position]);
-                          },
-                        ),
-                      ],
-                    ),
-                  ),
-                );
-              }),
-        ),
-      ],
-    );
+    return PokemonGridViewer();
   }
 
   @override
@@ -96,9 +46,9 @@ class CustomSearchDelegate extends SearchDelegate {
     return buildResults(context);
   }
 
-  void _filterResults(String query, List<CardModel> duplicateList) {
+  void _filterResults(BuildContext context, String query) {
     List<CardModel> tmpSearchList = List<CardModel>();
-    tmpSearchList.addAll(duplicateList);
+    tmpSearchList.addAll(ListCardRepository().duplicateCardList);
 
     if (query.isNotEmpty) {
       List<CardModel> tmpDataList = List<CardModel>();
@@ -108,11 +58,10 @@ class CustomSearchDelegate extends SearchDelegate {
           tmpDataList.add(element);
         }
       });
-      _listCardModel.clear();
-      _listCardModel.addAll(tmpDataList);
+      BlocProvider.of<ListCardBloc>(context)
+          .add(ChangeListCardEvent(tmpDataList));
     } else {
-      _listCardModel.clear();
-      _listCardModel.addAll(duplicateList);
+      BlocProvider.of<ListCardBloc>(context).add(ResetListCardEvent());
     }
   }
 }

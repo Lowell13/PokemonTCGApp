@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pokemontcgviewer/bloc/list_card/list_card_bloc.dart';
 import 'package:pokemontcgviewer/model/card_model.dart';
-import 'package:pokemontcgviewer/pages/list_viewer.dart';
 import 'package:pokemontcgviewer/service/card_service.dart';
 
 class Splashscreen extends StatefulWidget {
@@ -24,8 +25,9 @@ class _SplashscreenState extends State<Splashscreen> {
     _listCard = await CardServiceAPI.getCardList();
 
     if (_listCard != null) {
-      Navigator.popAndPushNamed(context, '/list_viewer',
-          arguments: ListCard(_listCard));
+      BlocProvider.of<ListCardBloc>(context)
+          .add(InitializeListCardEvent(_listCard));
+      Navigator.popAndPushNamed(context, '/list_viewer');
     } else {
       Navigator.popAndPushNamed(context, '/error');
     }
