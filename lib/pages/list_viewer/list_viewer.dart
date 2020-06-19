@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pokemontcgviewer/bloc/theme_picker/theme_picker_bloc.dart';
-import 'package:pokemontcgviewer/pages/custom_search_delegate.dart';
-import 'package:pokemontcgviewer/widget/pokemon_grid_viewer.dart';
+import 'package:pokemontcgviewer/pages/list_viewer/search_function/custom_search_delegate.dart';
+import 'package:pokemontcgviewer/pages/list_viewer/widget/pokemon_grid_viewer.dart';
 
 class ListViewer extends StatefulWidget {
   @override

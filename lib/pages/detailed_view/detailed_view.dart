@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pokemontcgviewer/model/card_model.dart';
-import 'package:pokemontcgviewer/widget/detailed_card.dart';
-import 'package:pokemontcgviewer/widget/detailed_pokemon.dart';
+import 'package:pokemontcgviewer/pages/detailed_view/widget/detailed_card.dart';
+import 'package:pokemontcgviewer/pages/detailed_view/widget/detailed_pokemon.dart';
 
 class DetailedView extends StatefulWidget {
   @override

@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:pokemontcgviewer/model/card_model.dart';
-import 'package:pokemontcgviewer/pages/big_card.dart';
+import 'package:pokemontcgviewer/pages/big_card/big_card.dart';
 import 'package:pokemontcgviewer/widget/custom_card.dart';
 
 class DetailedCard extends StatelessWidget {

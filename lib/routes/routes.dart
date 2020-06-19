@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:pokemontcgviewer/pages/big_card.dart';
-import 'package:pokemontcgviewer/pages/detailed_view.dart';
-import 'package:pokemontcgviewer/pages/error.dart';
-import 'package:pokemontcgviewer/pages/list_viewer.dart';
-import 'package:pokemontcgviewer/pages/splashscreen.dart';
+import 'package:pokemontcgviewer/pages/big_card/big_card.dart';
+import 'package:pokemontcgviewer/pages/detailed_view/detailed_view.dart';
+import 'package:pokemontcgviewer/pages/error/error.dart';
+import 'package:pokemontcgviewer/pages/list_viewer/list_viewer.dart';
+import 'package:pokemontcgviewer/pages/splashscreen/splashscreen.dart';
 
 Map<String, WidgetBuilder> routes = {
   '/splashscreen': (context) {

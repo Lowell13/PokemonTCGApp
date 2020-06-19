@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:pokemontcgviewer/model/card_model.dart';
 import 'package:pokemontcgviewer/model/pokemon_attack.dart';
 import 'package:pokemontcgviewer/model/pokemon_type_affection.dart';
-import 'package:pokemontcgviewer/pages/big_card.dart';
+import 'package:pokemontcgviewer/pages/big_card/big_card.dart';
 import 'package:pokemontcgviewer/widget/custom_card.dart';
 
 class DetailedPokemon extends StatelessWidget {

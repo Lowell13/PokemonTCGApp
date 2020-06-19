@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pokemontcgviewer/bloc/list_card/list_card_bloc.dart';
 
-import 'custom_card.dart';
+import '../../../widget/custom_card.dart';
 
 class PokemonGridViewer extends StatelessWidget {
   @override
