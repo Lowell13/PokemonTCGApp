@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pokemontcgviewer/bloc/list_card/list_card_bloc.dart';
 import 'package:pokemontcgviewer/model/card_model.dart';
-import 'package:pokemontcgviewer/repository/list_card/list_card_repository.dart';
 import 'package:pokemontcgviewer/pages/list_viewer/widget/pokemon_grid_viewer.dart';
+import 'package:pokemontcgviewer/repository/list_card/list_card_repository.dart';
 
 class CustomSearchDelegate extends SearchDelegate {
   @override
