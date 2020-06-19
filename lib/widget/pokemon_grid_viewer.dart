@@ -2,7 +2,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pokemontcgviewer/bloc/list_card/list_card_bloc.dart';
-import 'package:pokemontcgviewer/style/colors.dart';
 
 import 'custom_card.dart';
 
@@ -22,7 +21,6 @@ class PokemonGridViewer extends StatelessWidget {
               itemBuilder: (context, position) {
                 return Card(
                   elevation: 2.0,
-                  color: accentColor,
                   child: Padding(
                     padding: const EdgeInsets.symmetric(
                         horizontal: 15.0, vertical: 10.0),

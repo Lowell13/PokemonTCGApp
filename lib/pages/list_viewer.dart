@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pokemontcgviewer/bloc/theme_picker/theme_picker_bloc.dart';
 import 'package:pokemontcgviewer/pages/custom_search_delegate.dart';
 import 'package:pokemontcgviewer/widget/pokemon_grid_viewer.dart';
 
@@ -20,6 +22,26 @@ class _ListViewerState extends State<ListViewer> {
           style: Theme.of(context).textTheme.bodyText1,
         ),
         actions: <Widget>[
+          DropdownButton(
+            icon: Icon(Icons.settings),
+            items: <String>["Paint it Black", "My Little Pony"]
+                .map<DropdownMenuItem<String>>((String value) {
+              return DropdownMenuItem<String>(
+                value: value,
+                child: Text(value),
+              );
+            }).toList(),
+            onChanged: (String newTheme) {
+              if (newTheme == "Paint it Black") {
+                BlocProvider.of<ThemePickerBloc>(context)
+                    .add(ChangeThemePickerEvent(PibThemePickerState()));
+              } else {
+                BlocProvider.of<ThemePickerBloc>(context)
+                    .add(ChangeThemePickerEvent(MlpThemePickerState()));
+              }
+            },
+            underline: Container(),
+          ),
           IconButton(
             icon: Icon(Icons.search),
             onPressed: () {
