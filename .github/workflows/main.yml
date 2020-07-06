@@ -13,6 +13,8 @@ jobs:
         with:
           channel: stable
       - run: flutter pub get
+      - run : flutter build apk --debug --split-per-abi
+      - run : flutter build apk --profile --split-per-abi
       - run: flutter build apk --release --split-per-abi
       - name: Create a Release APK
         uses: ncipollo/release-action@v1
