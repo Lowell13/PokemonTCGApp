@@ -46,9 +46,7 @@ jobs:
         with:
           path: version.txt
       - run: flutter pub get
-      - run: flutter build apk --release --split-per-abi
       - run: flutter build apk --release
-      - run: flutter build appbundle
       - name: Create a Release APK
         uses: ncipollo/release-action@v1
         with:

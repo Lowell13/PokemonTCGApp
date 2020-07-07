@@ -16,6 +16,7 @@ class _ListViewerState extends State<ListViewer> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
+      backgroundColor: Theme.of(context).backgroundColor,
       appBar: AppBar(
         title: Text(
           'Pokemon Card List',
@@ -23,7 +24,10 @@ class _ListViewerState extends State<ListViewer> {
         ),
         actions: <Widget>[
           DropdownButton(
-            icon: Icon(Icons.settings),
+            icon: Icon(
+              Icons.settings,
+              color: Theme.of(context).iconTheme.color,
+            ),
             items: <String>["Paint it Black", "My Little Pony"]
                 .map<DropdownMenuItem<String>>((String value) {
               return DropdownMenuItem<String>(
@@ -43,7 +47,10 @@ class _ListViewerState extends State<ListViewer> {
             underline: Container(),
           ),
           IconButton(
-            icon: Icon(Icons.search),
+            icon: Icon(
+              Icons.search,
+              color: Theme.of(context).iconTheme.color,
+            ),
             onPressed: () {
               showSearch(context: context, delegate: CustomSearchDelegate());
             },

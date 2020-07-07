@@ -9,6 +9,8 @@ ThemeData myLittlePony = ThemeData(
   textTheme: textTheme,
   cursorColor: mlpPrimaryTextColor,
   cardColor: mlpAccentColor,
+  iconTheme: iconThemeData,
+  backgroundColor: mlpBackgroundColor,
 );
 
 AppBarTheme appBarTheme = AppBarTheme(
@@ -31,4 +33,8 @@ TextTheme textTheme = TextTheme(
     fontSize: 10.0,
     color: mlpPrimaryTextColor,
   ),
+);
+
+IconThemeData iconThemeData = IconThemeData(
+  color: iconColor,
 );

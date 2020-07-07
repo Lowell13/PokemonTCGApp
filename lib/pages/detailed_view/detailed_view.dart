@@ -21,6 +21,7 @@ class _DetailedViewState extends State<DetailedView> {
 
     return SafeArea(
       child: Scaffold(
+        backgroundColor: Theme.of(context).backgroundColor,
         appBar: AppBar(
           title: Text(
             cardModel.name,

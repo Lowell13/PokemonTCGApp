@@ -9,6 +9,8 @@ ThemeData paintItBlack = ThemeData(
   textTheme: textTheme,
   cursorColor: pibPrimaryTextColor,
   cardColor: pibAccentColor,
+  iconTheme: iconThemeData,
+  backgroundColor: pibBackgroundColor,
 );
 
 AppBarTheme appBarTheme = AppBarTheme(
@@ -31,4 +33,8 @@ TextTheme textTheme = TextTheme(
     fontSize: 10.0,
     color: pibPrimaryTextColor,
   ),
+);
+
+IconThemeData iconThemeData = IconThemeData(
+  color: iconColor,
 );
